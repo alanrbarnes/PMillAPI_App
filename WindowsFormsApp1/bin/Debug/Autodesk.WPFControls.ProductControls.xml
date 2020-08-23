@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Autodesk.WPFControls.ProductControls
+</name>
+</assembly>
+<members>
+<member name="T:Autodesk.WPFControls.ProductControls.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Autodesk.WPFControls.ProductControls.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Autodesk.WPFControls.ProductControls.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:Autodesk.WPFControls.ProductControls.DelcamProductBase.IsLooseEmbedded">
+ <summary>
+ Signifies whether the embedded window will be embedded with the window edges
+ visible or not.  If set to true then the window edges will be visible.  Hence
+ it is loosely embedded rather than being seamlessly embedded
+ </summary>
+</member>
+</members>
+</doc>

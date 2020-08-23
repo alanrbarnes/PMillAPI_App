@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Autodesk.WPFControls</name>
+    </assembly>
+    <members>
+        <member name="T:Autodesk.WPFControls.DelcamButton">
+            <summary>
+            DelcamButton is the standard button that should be used.  It inherits from the DelcamLinkButton
+            It has the following features:
+            - Ability to glow on mouse over and fade on mouse out
+            - Separate properties for Image and Content
+            - Alternate content property to cycle through a collection of images and texts on each click.  This
+            is similar to a toggle button but with multiple states
+            - A status image intended to indicate Red/Amber/Green status
+            - Horizontal/Vertical alignment of Image and Content items
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamButton.PART_StatusImage">
+            <summary>
+            Constant string to define the name of the StatusImage TemplatePart.
+            The Status Image indicates a Red/Amber/Green Status
+            </summary>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamButton.#cctor">
+            <summary>
+            Shared constructor initialises the default template
+            </summary>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamButton.OnApplyTemplate">
+            <summary>
+            This operation binds the StatusImage's properties to properties of this class
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamButton.StatusImageSourceProperty">
+            <summary>
+            This is the Source of the image used to indicate status
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamButton.StatusImageSource">
+            <summary>
+            This is the Source of the image used to indicate status
+            </summary>
+            <returns>Source of the image used to indicate status</returns>
+            <value>Source of the image used to indicate status</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamButton.StatusImageHeightProperty">
+            <summary>
+            This is the height of the image used to indicate status
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamButton.StatusImageHeight">
+            <summary>
+            This is the height of the image used to indicate status
+            </summary>
+            <returns>Height of the image in pixels</returns>
+            <value>Height of the image in pixels</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamButton.StatusImageWidthProperty">
+            <summary>
+            This is the width of the image used to indicate status
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamButton.StatusImageWidth">
+            <summary>
+            This is the width of the image used to indicate status
+            </summary>
+            <returns>Width of the image in pixels</returns>
+            <value>Width of the image in pixels</value>
+        </member>
+        <member name="T:Autodesk.WPFControls.DelcamLinkButton">
+            <summary>
+            DelcamLinkButton is a simple hyperlink style button.  It is also the base class for DelcamButton
+            It has the following features:
+            - Ability to glow on mouse over and fade on mouse out
+            - Separate properties for Image and Content
+            - Alternate content property to cycle through a collection of images and texts on each click.  This
+            is similar to a toggle button but with multiple states
+            - Horizontal/Vertical alignment of Image and Content items
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton.PART_Content">
+            <summary>
+            Constant string to define the name of the Content TemplatePart.
+            Not sure this is needed as the base class is a ContentControl
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton.PART_Image">
+            <summary>
+            Constant string to define the name of the Image TemplatePart.
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton._isUsingAlternativeContent">
+            <summary>
+            Holds whether the Alternative Content/Image are currently displayed or not
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton._imageSource">
+            <summary>
+            This is the source of the default image
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton._disabledImageSource">
+            <summary>
+            This is the source of the disabled image
+            </summary>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamLinkButton.#cctor">
+            <summary>
+            Shared constructor initialises the default style
+            </summary>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamLinkButton.OnApplyTemplate">
+            <summary>
+            This operation binds properties of the template parts to properties of this class.
+            This should be done in Generic.xml
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.ImageSource">
+            <summary>
+            This is the Source of the Image on the button
+            </summary>
+            <returns>The Source of the Image on the button</returns>
+            <value>The Source of the Image on the button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton.OrientationProperty">
+            <summary>
+            This is the orientation of the Image and Content
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.Orientation">
+            <summary>
+            This is the orientation of the Image and Content.
+            Horizontal will place the Image on the left and the Content on the right
+            Vertical will place the Image on the top and the Content on the bottom
+            </summary>
+            <returns>The orientation of the Image and Content.  This can be Horizontal or Vertical</returns>
+            <value>The orientation of the Image and Content.  This can be Horizontal or Vertical</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton.ImageHeightProperty">
+            <summary>
+            This is the height of the Image in pixels
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.ImageHeight">
+            <summary>
+            This is the height of the Image in pixels
+            </summary>
+            <returns>The height in pixels</returns>
+            <value>The height in pixels</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton.ImageWidthProperty">
+            <summary>
+            This is the width of the Image in pixels
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.ImageWidth">
+            <summary>
+            This is the width of the Image in pixels
+            </summary>
+            <returns>The width in pixels</returns>
+            <value>The width in pixels</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton.AlternativeImageSourceProperty">
+            <summary>
+            This is the source of the Alternative Image on the button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.AlternativeImageSource">
+            <summary>
+            This is the source of the Alternative Image on the button
+            </summary>
+            <returns>The Alternative Image on the button</returns>
+            <value>The Alternative Image on the button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamLinkButton.AlternativeContentProperty">
+            <summary>
+            This is the Alternative Content on the button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.AlternativeContent">
+            <summary>
+            This is the Alternative Content on the button
+            </summary>
+            <returns>The Alternative Content on the button</returns>
+            <value>The Alternative Content on the button</value>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.SelectedImage">
+            <summary>
+            This is the currently displayed Image from the ButtonItems.  If the list is empty then it is the value defined in the ImageSource property
+            </summary>
+            <returns>The currently displayed Image from the ButtonItems</returns>
+            <value>The currently displayed Image from the ButtonItems</value>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.SelectedContent">
+            <summary>
+            This is the currently displayed Content from the ButtonItems.  If the list is empty then it is the value defined in the Content property
+            </summary>
+            <returns>The currently displayed Content from the ButtonItems</returns>
+            <value>The currently displayed Content from the ButtonItems</value>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamLinkButton.DisabledImageSource">
+            <summary>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamLinkButton.DelcamLinkButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            This operation cycles to the next item in the ButtonItems list
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamLinkButton.OnContentChanged(System.Object,System.Object)">
+            <summary>
+            Notifies anyone watching that the SelectedContent has changed
+            </summary>
+            <param name="oldContent">The previous content of the button</param>
+            <param name="newContent">The new content of the button</param>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamLinkButton.DelcamLinkButton_IsEnabledChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Changes the image when the object's enabled state changes if there is a disabled image supplied
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Autodesk.WPFControls.DelcamChart">
+            <summary>
+            DelcamChart
+            </summary>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamChart.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.AutodeskLogoVisibilityProperty">
+            <summary>
+            This is the visibility of the Delcam DPS Logo
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.AutodeskLogoVisibility">
+            <summary>
+            This is the visibility of the Autodesk Logo
+            </summary>
+            <returns>Visibility of the Autodesk Logo</returns>
+            <value>Visibility of the Autodesk Logo</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.HomeButtonVisibilityProperty">
+            <summary>
+            This is the visibility of the Home Button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.HomeButtonVisibility">
+            <summary>
+            This is the visibility of the Home Button
+            </summary>
+            <returns>Visibility of the Home Button</returns>
+            <value>Visibility of the Home Button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.IsHomeButtonEnabledProperty">
+            <summary>
+            Gets and sets whether the Home Button is Enabled or not
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.IsHomeButtonEnabled">
+            <summary>
+            Gets and sets whether the Home Button is Enabled or not
+            </summary>
+            <returns>Whether the Home Button is Enabled or not</returns>
+            <value>Whether the Home Button is Enabled or not</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.HomeButtonCommandProperty">
+            <summary>
+            Gets and sets the command used when the home button is clicked
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.SaveButtonVisibilityProperty">
+            <summary>
+            This is the visibility of the Save Button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.SaveButtonVisibility">
+            <summary>
+            This is the visibility of the Save Button
+            </summary>
+            <returns>Visibility of the Save Button</returns>
+            <value>Visibility of the Save Button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.IsSaveButtonEnabledProperty">
+            <summary>
+            Gets and sets whether the Save Button is Enabled or not
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.IsSaveButtonEnabled">
+            <summary>
+            Gets and sets whether the Save Button is Enabled or not
+            </summary>
+            <returns>Whether the Save Button is Enabled or not</returns>
+            <value>Whether the Save Button is Enabled or not</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.SaveButtonCommandProperty">
+            <summary>
+            Gets and sets the command used when the exit button is clicked
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.BackButtonVisibilityProperty">
+            <summary>
+            This is the visibility of the Back Button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.BackButtonVisibility">
+            <summary>
+            This is the visibility of the Back Button
+            </summary>
+            <returns>Visibility of the Back Button</returns>
+            <value>Visibility of the Back Button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.IsBackButtonEnabledProperty">
+            <summary>
+            Gets and sets whether the Home Button is Enabled or not
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.IsBackButtonEnabled">
+            <summary>
+            Gets and sets whether the Back Button is Enabled or not
+            </summary>
+            <returns>Whether the Back Button is Enabled or not</returns>
+            <value>Whether the Back Button is Enabled or not</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.BackButtonCommandProperty">
+            <summary>
+            Gets and sets the command used when the Back button is clicked
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.HelpButtonVisibilityProperty">
+            <summary>
+            This is the visibility of the Help Button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.HelpButtonVisibility">
+            <summary>
+            This is the visibility of the Help Button
+            </summary>
+            <returns>Visibility of the Help Button</returns>
+            <value>Visibility of the Help Button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.IsHelpButtonEnabledProperty">
+            <summary>
+            Gets and sets whether the Help Button is Enabled or not
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.IsHelpButtonEnabled">
+            <summary>
+            Gets and sets whether the Help Button is Enabled or not
+            </summary>
+            <returns>Whether the Help Button is Enabled or not</returns>
+            <value>Whether the Help Button is Enabled or not</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.HelpButtonCommandProperty">
+            <summary>
+            Gets and sets the command used when the help button is clicked
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.AboutButtonVisibilityProperty">
+            <summary>
+            This is the visibility of the About Button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.AboutButtonVisibility">
+            <summary>
+            This is the visibility of the About Button
+            </summary>
+            <returns>Visibility of the About Button</returns>
+            <value>Visibility of the About Button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.IsAboutButtonEnabledProperty">
+            <summary>
+            Gets and sets whether the About Button is Enabled or not
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.IsAboutButtonEnabled">
+            <summary>
+            Gets and sets whether the About Button is Enabled or not
+            </summary>
+            <returns>Whether the About Button is Enabled or not</returns>
+            <value>Whether the About Button is Enabled or not</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.AboutButtonCommandProperty">
+            <summary>
+            Gets and sets the command used when the about button is clicked
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.ExitButtonVisibilityProperty">
+            <summary>
+            This is the visibility of the Exit Button
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.ExitButtonVisibility">
+            <summary>
+            This is the visibility of the Exit Button
+            </summary>
+            <returns>Visibility of the Exit Button</returns>
+            <value>Visibility of the Exit Button</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.IsExitButtonEnabledProperty">
+            <summary>
+            Gets and sets whether the Exit Button is Enabled or not
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamDesktop.IsExitButtonEnabled">
+            <summary>
+            Gets and sets whether the Exit Button is Enabled or not
+            </summary>
+            <returns>Whether the Exit Button is Enabled or not</returns>
+            <value>Whether the Exit Button is Enabled or not</value>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.ExitButtonCommandProperty">
+            <summary>
+            Gets and sets the command used when the exit button is clicked
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamDesktop.IsFullScreenModeProperty">
+            <summary>
+            Gets and sets the full screen mode
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Autodesk.WPFControls.DelcamTextBox">
+            <summary>
+            This class is the Delcam Text Box.
+            It is like a normal TextBox but allows you to add a cue that will fade out as you type
+            It can also be used as a search box with a magnifying glass
+            </summary>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamTextBox.#cctor">
+            <summary>
+            Shared constructor initializes look and behavior
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamTextBox.TextBoxCueProperty">
+            <summary>
+            This is the cue dependency property.  Whatever you put in here will be shown when there is no text and will
+            fade out as you type
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamTextBox.TextBoxCue">
+            <summary>
+            Gets and sets the cue property.  Whatever you put in here will be shown when there is no text and will
+            fade out as you type
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamTextBox.IsEmptyPropertyKey">
+            <summary>
+            This is the Key for the IsEmpty DependencyProperty
+            </summary>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamTextBox.IsEmptyProperty">
+            <summary>
+            This is the IsEmpty DependencyProperty.  It identifies whether or not there is text in the TextBox
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamTextBox.IsEmpty">
+            <summary>
+            Gets whether or not there is text in the TextBox
+            </summary>
+            <returns>Whether or not there is text in the TextBox</returns>
+        </member>
+        <member name="F:Autodesk.WPFControls.DelcamTextBox.IsSearchBoxProperty">
+            <summary>
+            This dependency property specifies whether it is a search box. If it is then a magnifying glass will appear
+            </summary>
+        </member>
+        <member name="P:Autodesk.WPFControls.DelcamTextBox.IsSearchBox">
+            <summary>
+            Gets and sets whether or not this is a search box.  If it is then a magnifying glass will appear
+            </summary>
+        </member>
+        <member name="M:Autodesk.WPFControls.DelcamTextBox.TextPropertyChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            This operation keeps the IsEmpty DependencyProperty up to date
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Autodesk.ProductInterface</name>
+    </assembly>
+    <members>
+        <member name="T:Autodesk.ProductInterface.Automation">
+            <summary>
+            Base class for all Automation.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Automation._processId">
+            <summary>
+            Application process id.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Automation.InstanceReuse">
+            <summary>
+            Indicates whether a new instance of the application should be launched or an existing one be used.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Automation._isGUIVisible">
+            <summary>
+            If True, the GUI is shown; false otherwise.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Automation._version">
+            <summary>
+            Specifies the application version to use.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.Initialise(Autodesk.ProductInterface.InstanceReuse)">
+            <summary>
+            Specifies whether an existing instance of the application be used or a new one created. This implementation is
+            version non-specific and either the first existing instance of the application found or the latest installed version will be used.
+            </summary>
+            <param name="InstanceReuse">Specifies re-use or new instance.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.Initialise(Autodesk.ProductInterface.InstanceReuse,System.Version,System.Version)">
+            <summary>
+            Specifies whether an existing instance of the application be used or a new one created.
+            The application version must be specified and, optionally, a maximum version. If a version
+            greater than that specified in <i>version</i>, but less than or equal to that specified by <i>maximumVersion</i> is found,
+            then this will be used. Should <i>maximumVersion</i> be unspecified, only the absolute version specified
+            <i>in version</i> will be used.
+            </summary>
+            <param name="InstanceReuse">Specifies re-use or new instance.</param>
+            <param name="version">Nominal application version to use.</param>
+            <param name="maximumVersion">Maximum application version to use.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.UseExistingInstance(System.Version,System.Version)">
+            <summary>
+            Should attempt to connect to a running application instance of the correct version.  If it
+            cannot, then it should start a new one.
+            </summary>
+            <param name="version">Nominal application version to use.</param>
+            <param name="maximumVersion">Maximum application version to use.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.CreateNewInstance(System.Version,System.Version)">
+            <summary>
+            Should create a new application instance alongside existing instances.
+            </summary>
+            <param name="version">Nominal application version to use.</param>
+            <param name="maximumVersion">Maximum application version to use.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.CreateSingleInstance(System.Version,System.Version)">
+            <summary>
+            Should close all other instances and create a new one.
+            </summary>
+            <param name="version">Nominal application version to use.</param>
+            <param name="maximumVersion">Maximum application version to use.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.Quit">
+            <summary>
+            Should close this instance of the application.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.RecordMacro(System.String)">
+            <summary>
+            Should implement macro recording.
+            </summary>
+            <param name="macroFilename">Name of file in which macro will be recorded.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.StopMacroRecording">
+            <summary>
+            Should stop macro recording.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Automation.ProcessId">
+            <summary>
+            Process id of the application instance.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Automation.MainWindowId">
+            <summary>
+            Handle of the main window of this application instance.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Automation.IsRunning">
+            <summary>
+            True if the process is running; false otherwise.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.CloseAllInstancesOf(System.String)">
+            <summary>
+            Closes all instances of a process with the specified name.
+            </summary>
+            <param name="name">Name of the process.</param>
+            <exception cref="T:System.Exception">Thrown if it was not possible to close all instances with the specified name.</exception>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.StartExecutable(System.String,System.Version,System.Version,System.String,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Launches the executable located at the path retrieved from the registry for the specified application name, version and maximum version.
+            If a version greater than that specified in <i>version</i>, but less than or equal to that specified by <i>maximumVersion</i> is found,
+            then this will be used. Should <i>maximumVersion</i> be unspecified, only the absolute version specified <i>in version</i> will be used.
+            </summary>
+            <param name="application">Name of the application to be launched.</param>
+            <param name="version">Nominal application version to use.</param>
+            <param name="maximumVersion">Maximum application version to use.</param>
+            <param name="classId">
+            Represents the class of a COM object and takes the form <i>appname.objecttype</i>, where
+            <i>appname</i> is the name of the application providing the object and <i>objecttype</i> is the type or class of object to create.
+            </param>
+            <param name="showWindow">Specify True if the main application window is to be displayed; false otherwise.</param>
+            <param name="arguments">Arguments to be passed to the application.</param>
+            <param name="runRegServer">If True, COM component will be registered. Assumes administrative rights are avaiable.</param>
+            <exception cref="T:System.Exception">Thrown if the executable cannot be started.</exception>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.StartByClassId(System.String,System.String,System.Version,System.Version)">
+            <summary>
+            Creates and returns a reference to a COM object as specified by the ClassId argument.
+            If a version greater than that specified in <i>version</i>, but less than or equal to that specified by <i>maximumVersion</i> is found,
+            then this will be used. Should <i>maximumVersion</i> be unspecified, only the absolute version specified <i>in version</i> will be used.
+            </summary>
+            <param name="classId">Program Id of object to create e.g. PowerSHAPE.Application.</param>
+            <param name="processName">Name of the executable e.g. powershape.</param>
+            <param name="version">Nominal application version to use.</param>
+            <param name="maximumVersion">Maximum application version to use.</param>
+            <exception cref="T:System.Exception">Thrown if the executable cannot be started.</exception>
+            <returns>Reference to COM object.</returns>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.ExecutablePath(System.String,System.Version,System.Version)">
+            <summary>
+            Retrieves from the registry the path to the specified application.
+            If a version greater than that specified in <i>version</i>, but less than or equal to that specified by <i>maximumVersion</i> is found,
+            then the path to this executable will be returned.
+            Should <i>maximumVersion</i> be unspecified, only the path to the absolute version specified <i>in version</i> will be returned.
+            </summary>
+            <param name="application">Application name.</param>
+            <param name="version">Nominal application version to use.</param>
+            <param name="maximumVersion">Maximum application version to use.</param>
+            <exception cref="T:System.Exception">Thrown if no version found.</exception>
+            <returns>Path to requested executable.</returns>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Automation.IsVisible">
+            <summary>
+            If True, the application is visible; False otherwise.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Automation.IsGUIVisible">
+            <summary>
+            If True, the GUI (toolbars etc) is visible; False otherwise.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Automation.SetViewAngle(Autodesk.ViewAngles)">
+            <summary>
+            Sets the view angle of the current project based on the Active Workplane.
+            </summary>
+            <param name="viewAngle">Angle of view.</param>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Automation.Version">
+            <summary>
+            Version of the current application.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Automation.ExecutableName">
+            <summary>
+            Name of the process.
+            </summary>
+        </member>
+        <member name="T:Autodesk.ProductInterface.CommandBusyFlag">
+            <summary>
+            Allows CopyCAD to signal to PowerSHAPE that it is busy.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.CommandBusyFlag.#ctor(System.String)">
+            <summary>
+            Creates the flag object and maps into this process shared memory of the corresponding name.
+            If it does not already exist then it is created.
+            </summary>
+            <param name="flag">Flag name and the name of the shared memory to be mapped/created.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Autodesk.ProductInterface.CommandBusyFlag.is_set">
+            <summary>
+            Returns True if the flag has been set; False otherwise.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.CommandBusyFlag.unset_flag">
+            <summary>
+            Resets the flag.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.CommandBusyFlag.set_flag">
+            <summary>
+            Sets the flag.
+            </summary>
+        </member>
+        <member name="T:Autodesk.ProductInterface.GetCOMObjectsHelper">
+            <summary>
+            Base class to get COM objects instances
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.GetCOMObjectsHelper.GetRunningInstances(System.String)">
+            <summary>
+            Get all running instance by querying ROT
+            </summary>
+            <param name="classId">ClassId to search for. Example "PowerMILL.Application"</param>
+            <returns>A list of COM Objects</returns>
+        </member>
+        <member name="T:Autodesk.ProductInterface.InstanceReuse">
+            <summary>
+            Specifies how an executable instance is to be obtained.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.InstanceReuse.UseExistingInstance">
+            <summary>
+            Will use an existing running instance
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.InstanceReuse.CreateNewInstance">
+            <summary>
+            Will create a new instance alongside any existing instances
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.InstanceReuse.CreateSingleInstance">
+            <summary>
+            Will close any existing instances and open a new instance
+            </summary>
+        </member>
+        <member name="T:Autodesk.ProductInterface.Macro">
+            <summary>
+            Abstract base class for encapsulating a Macro and all operations thereon.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Macro._lines">
+            <summary>
+            Macro command lines.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Macro._localIndex">
+            <summary>
+            Current index within this Macro.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Macro._totalIndex">
+            <summary>
+            Current index within this file - including all sub macros.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Macro._cancel">
+            <summary>
+            If True, indicates that a Macro cancellation is pending.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Macro.withEventsField__childMacro">
+            <summary>
+            Currently execturing child Macro.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.Macro._executedCommands">
+            <summary>
+            List of commands that have been executed.
+            </summary>
+        </member>
+        <member name="E:Autodesk.ProductInterface.Macro.StepProcessed">
+            <summary>
+            Raised when a Macro line is processed.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Macro.LocalCount">
+            <summary>
+            Number of lines in this macro, excluding children.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Macro.TotalCount">
+            <summary>
+            Number of lines in this macro including children.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Macro.Index">
+            <summary>
+            Index of the next line to be executed in this Macro.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Macro.Cancel">
+            <summary>
+            If True, Macro will be cancelled; False otherwise.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Macro.Text">
+            <summary>
+            All lines of the Macro in a string.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.Macro.ExecutedCommands">
+            <summary>
+            Commands that have been executed by this Macro.
+            </summary>
+            <returns>The commands that have been executed by this macro</returns>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Macro.Run(System.Boolean,System.Boolean)">
+            <summary>
+            Will run the macro.
+            </summary>
+            <param name="giveProgress">If True, events will be raised reporting the Macro's progress; False otherwise.</param>
+            <param name="hideDialogs">If True, dialogs will be hidden; False otherwise.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Macro.RunComplete">
+            <summary>
+            Will Run the Macro from start to finish rather then line by line. Substitution strings will be replaced before the macro is run.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Macro.RunStep(System.Boolean)">
+            <summary>
+            Will execute the next step in the Macro.
+            </summary>
+            <param name="hideDialogs">If True, dialogs will be hidden; False otherwise.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Macro.RaiseStepProcessedEvent(System.Object,Autodesk.ProductInterface.MacroStepEventArgs)">
+            <summary>
+            Raises the step processed event.
+            </summary>
+            <param name="sender">Sender of the event.</param>
+            <param name="e">Macro step event arguments.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.Macro.objChildMacro_StepProcessed(System.Object,Autodesk.ProductInterface.MacroStepEventArgs)">
+            <summary>
+            This operation handles the child macro processing a step.  It raises the event up to the owner
+            of this macro and ensures that the index and count values are correct
+            </summary>
+        </member>
+        <member name="T:Autodesk.ProductInterface.MacroStepEventArgs">
+            <summary>
+            Encapsulates data used to report the progress of the Macro.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.MacroStepEventArgs._index">
+            <summary>
+            This is the index of the last run step
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.MacroStepEventArgs._totalSteps">
+            <summary>
+            This is the total number of steps to be executed
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.MacroStepEventArgs.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initialises the attributes of the EventArgs to the specified values.
+            </summary>
+            <param name="index">Start index.</param>
+            <param name="totalSteps">Total number of steps.</param>
+        </member>
+        <member name="P:Autodesk.ProductInterface.MacroStepEventArgs.Index">
+            <summary>
+            Current step index in the Macro.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.MacroStepEventArgs.TotalSteps">
+            <summary>
+            Total number of steps in the Macro.
+            </summary>
+        </member>
+        <member name="P:Autodesk.ProductInterface.MacroStepEventArgs.Percentage">
+            <summary>
+            Percentage complete: 0.0 - 100.0.
+            </summary>
+        </member>
+        <member name="T:Autodesk.ProductInterface.SharedMemory">
+            <summary>
+            Provides a minimal .Net interface around unmanaged shared memory resources.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Autodesk.ProductInterface.SharedMemory.Open(System.String,System.Int32)">
+            <summary>
+            Maps a shared memory file into the address space of this application. If the file does not already exist, it is created.
+            </summary>
+            <param name="MemoryName">Name of the memory file.</param>
+            <param name="Size">Size in bytes of the memory file.</param>
+            <returns>True if the operation is successful; False otherwise.</returns>
+        </member>
+        <member name="M:Autodesk.ProductInterface.SharedMemory.Close">
+            <summary>
+            Unmaps the shared memory file from the address space of this application.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.SharedMemory.Finalize">
+            <summary>
+            Clears up unmanaged resources.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Autodesk.ProductInterface.SharedMemory.Peek">
+            <summary>
+            Returns to the caller the first UTF8 encoded byte of data held in the shared memory buffer.
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.SharedMemory.Put(System.String)">
+            <summary>
+            Writes data to the shared memory file.
+            </summary>
+            <param name="Data">Data to be written.</param>
+        </member>
+        <member name="T:Autodesk.ProductInterface.WindowHider">
+            <summary>
+            Facilitates the hiding of a named window.
+            </summary>
+        </member>
+        <member name="F:Autodesk.ProductInterface.WindowHider._windowTitle">
+            <summary>
+            The title of the window to hide
+            </summary>
+        </member>
+        <member name="M:Autodesk.ProductInterface.WindowHider.HideWindow(System.String)">
+            <summary>
+            Attempts to hide the window with the specified title.
+            </summary>
+            <param name="windowTitle">Title of window to hide.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.WindowHider.#ctor(System.String)">
+            <summary>
+            Constructs a WindowHider object initialised with the title of the window to hide.
+            </summary>
+            <param name="windowTitle">Title of the window to hide.</param>
+        </member>
+        <member name="M:Autodesk.ProductInterface.WindowHider.CallBackFunction(System.Int32,System.Int32)">
+            <summary>
+            This callback function is called by Windows (from the EnumWindows API call) for every window that exists
+            </summary>
+            <param name="hwnd">The handle of the window</param>
+            <param name="param">The show/hide parameter.  0 to hide, 1 to show</param>
+            <returns>True or false to indicate whether all was fine</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Autodesk.WPFControls.ProductControls.PowerMILL
+</name>
+</assembly>
+<members>
+<member name="T:Autodesk.WPFControls.ProductControls.PowerMILL.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Autodesk.WPFControls.ProductControls.PowerMILL.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Autodesk.WPFControls.ProductControls.PowerMILL.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Autodesk.WPFControls.ProductControls.PowerMILL.DelcamPowerMILLBase">
+ <summary>
+ Allows to show PowerMill embedded into a WPF control.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:Autodesk.WPFControls.ProductControls.PowerMILL.DelcamPowerMILLBase.Automation">
+ <summary>
+ Gets or sets the base instance to interact with PowerMILL.
+ </summary>
+</member>
+<member name="F:Autodesk.WPFControls.ProductControls.PowerMILL.DelcamPowerMILLBase.AutomationProperty">
+ <summary>
+ Implementation of the dependency property.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Autodesk.WPFControls.ProductControls.PowerMILL.DelcamPowerMILLBase.OnAutomationChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+ <summary>
+ Change notification callback for AutomationProperty.
+ </summary>
+</member>
+</members>
+</doc>

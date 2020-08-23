@@ -1,0 +1,794 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Autodesk.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Autodesk.Axes">
+            <summary>
+            Definition of three geometric axes used throughout Delcam Custom Software Core.
+            </summary>
+        </member>
+        <member name="T:Autodesk.LengthUnits">
+            <summary>
+            Definition of length units used throughout Delcam Custom Software Core.
+            </summary>
+        </member>
+        <member name="T:Autodesk.Planes">
+            <summary>
+            Definition of geometric planes used throughout Delcam Custom Software Core.
+            </summary>
+        </member>
+        <member name="T:Autodesk.ViewAngles">
+            <summary>
+            Definition of viewing angles used throughout Delcam Custom Software Core.
+            </summary>
+        </member>
+        <member name="T:Autodesk.Extensions.BooleanExtensions">
+            <summary>
+            Contains Boolean extension method
+            </summary>
+        </member>
+        <member name="M:Autodesk.Extensions.BooleanExtensions.ToYesNo(System.Boolean)">
+            <summary>
+            This operation returns the string "YES" if the input boolean is True,
+            "NO" otherwise.
+            </summary>
+            <param name="inputBoolean">Boolean value to convert.</param>
+            <returns>"YES" or "NO"</returns>
+        </member>
+        <member name="M:Autodesk.Extensions.BooleanExtensions.ToOnOff(System.Boolean)">
+            <summary>
+            This operation returns the string "ON" if the input boolean is True,
+            "OFF" otherwise.
+            </summary>
+            <param name="inputBoolean">Boolean value to convert.</param>
+            <returns>"ON" or "OFF"</returns>
+        </member>
+        <member name="M:Autodesk.Extensions.BooleanExtensions.ToOneZero(System.Boolean)">
+            <summary>
+            This operation returns the string "1" if the input boolean is True,
+            "0" otherwise.
+            </summary>
+            <param name="inputBoolean">Boolean value to convert.</param>
+            <returns>1 or 0</returns>
+        </member>
+        <member name="T:Autodesk.Extensions.EnumExtensions">
+            <summary>
+            This module contains all enum extensions
+            </summary>
+        </member>
+        <member name="M:Autodesk.Extensions.EnumExtensions.AxisToPlane(Autodesk.Axes)">
+            <summary>
+            Returns plane normal to the input axis.
+            </summary>
+            <param name="inputAxis">Axis against which to return the plane.</param>
+            <returns>Plane normal to input axis.</returns>
+        </member>
+        <member name="M:Autodesk.Extensions.EnumExtensions.PlaneToAxis(Autodesk.Planes)">
+            <summary>
+            Returns axis normal to the input plane.
+            </summary>
+            <param name="inputPlane">Plane against which to return the axis.</param>
+            <returns>Axis normal to input plane.</returns>
+        </member>
+        <member name="M:Autodesk.Extensions.EnumExtensions.ToDescription``1(``0)">
+            <summary>
+            Get Enum description value
+            </summary>
+            <param name="value">enum value</param>
+            <returns>description value</returns>
+        </member>
+        <member name="M:Autodesk.Extensions.EnumExtensions.GetFullName``1(``0)">
+            <summary>
+            Get enum full name
+            </summary>
+            <example>
+            enum Colors{ Red, Yellow }
+            GetFullName(Colors.Red) --> "ColorsRed";
+            </example>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.Extensions.EnumExtensions.GetEnumByResourceValue``1(System.String,System.Resources.ResourceSet)">
+            <summary>
+            Get enum value by string value representing value withing a  <see cref="T:System.Resources.ResourceSet"/> lookup
+            </summary>
+            <example>
+            Giving
+            enumOfItems {
+            FirstItem,
+            SecondItem,
+            LastItme
+            }
+            mapped to keys of
+            resourceSet {
+            ("FirstItem","First value"),
+            ("SecondItem","Second value"),
+            ("LastItem","Last value")
+            }
+            and if you need to find an enum of value =  "Second value"
+            this will return enumOfItems.SecondItem
+            </example>
+            <typeparam name="T">type of Enum</typeparam>
+            <param name="value">a string value of Enum</param>
+            <param name="resourceSet">lookup resources</param>
+            <returns>value of enum</returns>
+        </member>
+        <member name="T:Autodesk.FileSystem.BinaryFileReader">
+            <summary>
+            Provides a simplified interface for reading binary data from file.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.#ctor(Autodesk.FileSystem.File)">
+            <summary>
+            Constructs a BinaryFileReader object.
+            </summary>
+            <param name="file">File around which to create the binary reader.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.#ctor(System.Byte[])">
+            <summary>
+            Constructs a BinaryFileReader object.
+            </summary>
+            <param name="bytes">Byte array around which to create the binary reader.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.Close">
+            <summary>
+            Close the file.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadByte">
+            <summary>
+            Reads a single byte from the binary stream and advances the file pointer to the next byte.
+            </summary>
+            <returns>Byte read.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadBytes(System.Int32)">
+            <summary>
+            Reads from the stream a byte array of the specified length and advances the file pointer to the next position after.
+            If the end of file marker is reached then the number of bytes returned will be less than that requested.
+            </summary>
+            <param name="count">Number of bytes to read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadString(System.Int32)">
+            <summary>
+            Reads a string from the stream of the specified length.
+            </summary>
+            <param name="length">String length in bytes (ASCII characters).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadStringUntil(System.Byte,System.Int32)">
+            <summary>
+            Reads a string of ASCII text from the stream until the specified terminating character is encountered
+            or the maximum specified string length is reached. The terminating character is NOT included in
+            the returned string.
+            </summary>
+            <param name="terminator">Byte containing character to break on.</param>
+            <param name="maximumLength">Maximum permissible string length.</param>
+            <returns>String of ASCII characters.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadStringUntil(System.Byte,System.Int32,System.Boolean)">
+            <summary>
+            Reads a string of ASCII text from the stream until the specified terminating character is encountered
+            or the maximum specified string length is reached. The terminating character can optionally be included
+            in the return string.
+            </summary>
+            <param name="terminator">Byte containing character to break on.</param>
+            <param name="maximumLength">Maximum permissible string length.</param>
+            <param name="includeTerminator">Includes terminating character in return string if True. </param>
+            <returns>String of ASCII characters.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadUInt16">
+            <summary>
+            Reads an unsigned, 16 bit integer from the binary stream (Same as ReadUShort).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadUInteger">
+            <summary>
+            Reads an unsigned 32 bit integer from the binary stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadShort">
+            <summary>
+            Reads a 16 bit signed integer from the binary stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadUShort">
+            <summary>
+            Reads an unsigned short integer from the binary stream (Same as ReadUInt16).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadInteger">
+            <summary>
+            Reads a 32 bit integer from the binary stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadSingle">
+            <summary>
+            Reads a four byte (single precision) floating point value from the binary stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileReader.ReadDouble">
+            <summary>
+            Reads an eight byte (double precision) floating point value from the binary stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Autodesk.FileSystem.BinaryFileWriter">
+            <summary>
+            Provides a simplified interface for writing binary data to file.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.#ctor(Autodesk.FileSystem.File)">
+            <summary>
+            Constructs a BinaryFileWriter object.
+            </summary>
+            <param name="file">File around which to create the writer.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.#ctor(Autodesk.FileSystem.File,System.Text.Encoding)">
+            <summary>
+            Constructs a BinaryFileWriter object.
+            </summary>
+            <param name="file">File around which to create the writer.</param>
+            <param name="encoding">Character encoding to use when writing to file.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.Close">
+            <summary>
+            Closes the file.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteByte(System.Byte)">
+            <summary>
+            Writes a single byte to file.
+            </summary>
+            <param name="value">The byte value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteBytes(System.Byte[])">
+            <summary>
+            Writes a byte array to file.
+            </summary>
+            <param name="value">Array to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteString(System.String)">
+            <summary>
+            Writes string to file .
+            </summary>
+            <param name="value">String to be written.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteUInt16(System.UInt16)">
+            <summary>
+            Writes an unsigned 16 bit integer to file (same as WriteUShort).
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteUInteger(System.UInt32)">
+            <summary>
+            Writes an unsigned 32 bit integer to file.
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteShort(System.Int16)">
+            <summary>
+            Writes a signed 16 bit integer to file.
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteUShort(System.UInt16)">
+            <summary>
+            Writes a 16 bit unsigned integer to file (same as WriteUInt16).
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteUInt32(System.UInt32)">
+            <summary>
+            Write an unsigned 32 bit integer to file.
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteInteger(System.Int32)">
+            <summary>
+            Write a signed 32 bit integer to file.
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteSingle(System.Single)">
+            <summary>
+            Write a four byte (single precision) floating point number to file.
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.BinaryFileWriter.WriteDouble(System.Double)">
+            <summary>
+            Write an eight byte (double precision) floating point number to file.
+            </summary>
+            <param name="value">Value to write.</param>
+        </member>
+        <member name="T:Autodesk.FileSystem.Directory">
+            <summary>
+            Simplifies certain operations on file system directories.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.#ctor(System.String)">
+            <summary>
+            Creates a new Directory object.
+            </summary>
+            <param name="path">The directory path.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.#ctor(Autodesk.FileSystem.Directory,System.String)">
+            <summary>
+            Creates a new Directory object with a path relative to the specified parent.
+            </summary>
+            <param name="parentDirectory">Parent directory of the new directory.</param>
+            <param name="directoryName">Directory to add to Parent directory.</param>
+        </member>
+        <member name="P:Autodesk.FileSystem.Directory.Path">
+            <summary>
+            Directory path.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.Directory.Name">
+            <summary>
+            Directory name.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.Directory.Exists">
+            <summary>
+            True if directory exists, false otherwise.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.Directory.IsEmpty">
+            <summary>
+            True if directory is empty, false otherwise.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.Directory.Directories">
+            <summary>
+            List of directories contained within this directory.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.Directory.Files">
+            <summary>
+            List of files contained within this directory.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.Directory.ParentDirectory">
+            <summary>
+            Parent directory of this directory object.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.Create">
+            <summary>
+            Create the directory
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.Delete">
+            <summary>
+            Delete this directory and all its contents from disk.
+            </summary>
+            <exception cref="T:System.IO.IOException">Please refer to the System.IO.Directory Delete method.</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Please refer to the System.IO.Directory Delete method.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Please refer to the System.IO.Directory Delete method.</exception>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.Move(Autodesk.FileSystem.Directory)">
+            <summary>
+            Moves the directory and its contents to a new path.
+            </summary>
+            <param name="newPath">New directory path.</param>
+            <exception cref="T:System.Exception">The new path already exists.</exception>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.MoveToNewParent(Autodesk.FileSystem.Directory)">
+            <summary>
+            Move directory to the new specified parent
+            </summary>
+            <param name="newParentDirectory">New parent directory.</param>
+            <exception cref="T:System.Exception">The new parent exists already.</exception>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.Copy(Autodesk.FileSystem.Directory)">
+            <summary>
+            Copies the directory and its contents to the specified path, overwriting all files with the same names.
+            </summary>
+            <param name="newPath">Destination path.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.CopyToNewParent(Autodesk.FileSystem.Directory)">
+            <summary>
+            Copy directory and its contents to the specified new parent, overwriting all files with the same names.
+            </summary>
+            <param name="newParentDirectory">Destination directory.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.CopyContents(Autodesk.FileSystem.Directory,Autodesk.FileSystem.Directory)">
+            <summary>
+            Copy the contents of the source directory into the target directory, overwriting all files with the same names.
+            </summary>
+            <param name="source">Source directory.</param>
+            <param name="target">Target directory.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.Directory.CreateTemporaryDirectory(System.Boolean)">
+            <summary>
+            Creates a new logical temporary Directory object within the temp folder of the logged in user and, optionally,
+            creates the directory on disk. The directory is created with the name format TMP00000, thus providing
+            a maximum upper limit of 99999 directories.
+            </summary>
+            <param name="createFolder">If True, the directory is created on disk.</param>
+            <exception cref="T:System.Exception">Limit of temporary directory names exceeded.</exception>
+            <returns>Directory</returns>
+        </member>
+        <member name="T:Autodesk.FileSystem.File">
+            <summary>
+            Provides a thin wrapper around System.IO File to simplify certain operations.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.#ctor(System.String)">
+            <summary>
+            Creates a new File object for the specified path. Note: the file is not created on disk at this point.
+            </summary>
+            <param name="filePath">Fully qualified path to the destination file.</param>
+            <exception cref="T:System.ArgumentNullException">Results from a null or empty filePath argument.</exception>
+            <exception cref="T:System.ArgumentException">No containing folder: only a file name is specified in the filePath argument.</exception>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.#ctor(Autodesk.FileSystem.Directory,System.String)">
+            <summary>
+            Creates a new File object with path specified by the parentDirectory argument and filename
+            specified in the string argument. NOTE: the file is not created on disk at this point.
+            </summary>
+            <param name="parentDirectory">Parent directory of the file.</param>
+            <param name="fileName">Name of the file.</param>
+            <exception cref="T:System.Exception">Results from a null or empty fileName argument.</exception>
+        </member>
+        <member name="P:Autodesk.FileSystem.File.Exists">
+            <summary>
+            True if the file exists.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.File.ParentDirectory">
+            <summary>
+            File's parent Directory object..
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.File.Path">
+            <summary>
+            Full path to the file.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.File.Name">
+            <summary>
+            Filename.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.File.NameWithoutExtension">
+            <summary>
+            Filename without extension.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.File.Extension">
+            <summary>
+            File extension (without the '.').
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.File.LastChangedDate">
+            <summary>
+            Date the file was last modifed.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.Create">
+            <summary>
+            Create the file if it does not already exist.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.Delete">
+            <summary>
+            Delete the file.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.Copy(Autodesk.FileSystem.File)">
+            <summary>
+            Copy the file to a new filepath. If a file with the same name and path already exists, it will be overwritten.
+            </summary>
+            <param name="destination">File object representing new path and filename.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.Move(Autodesk.FileSystem.File)">
+            <summary>
+            Move File to new path
+            </summary>
+            <param name="newFile">File object representing new path.</param>
+            <exception cref="T:System.IO.IOException">Thrown if file already exists in destination path.</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Caller does not possess the required permission.</exception>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.CopyToDirectory(Autodesk.FileSystem.Directory)">
+            <summary>
+            Copies the file to the specified new parent directory. If a file with the same name already exists, it will be overwritten.
+            </summary>
+            <param name="newParentDirectory">Directory to which the file is to be copied.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.Rename(System.String)">
+            <summary>
+            Renames file within the current directory.
+            </summary>
+            <param name="newFileName">New name of the file.</param>
+            <exception cref="T:System.ArgumentException">Thrown if input argument is not a valid filename.</exception>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.MoveToDirectory(Autodesk.FileSystem.Directory)">
+            <summary>
+            Moves file to a new directory.
+            </summary>
+            <param name="newDirectory">Target Directory.</param>
+            <exception cref="T:System.IO.IOException">Thrown if file already exists in destination path.</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Caller does not possess the required permission.</exception>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.ReadText">
+            <summary>
+            Returns Entire file contents using UTF8 encoding.
+            </summary>
+            <returns>String containing file contents.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.ReadText(System.Text.Encoding)">
+            <summary>
+            Returns entire file contents using the encoding passed in the single input argument.
+            </summary>
+            <param name="encoding">System.Text.Encoding to use.</param>
+            <returns>String containing file Contents.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.ReadTextLines">
+            <summary>
+            Returns file contents as a list of strings using UTF8 encoding. Each string represents a seperate line of text in the file.
+            </summary>
+            <returns>List of strings.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.ReadFirstLine">
+            <summary>
+            Returns the text of the first line of the file using UTF8 encoding.
+            </summary>
+            <returns>The first line of the file.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.ReadTextLines(System.Text.Encoding)">
+            <summary>
+            Returns file contents as a list of strings using the encoding specified in the single input argument.
+            Each string represents a seperate line of text in the file.
+            </summary>
+            <param name="encoding">System.Text.Encoding to use.</param>
+            <returns>List of strings</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.WriteText(System.String)">
+            <summary>
+            Writes a string of text to file using UTF8 encoding.
+            </summary>
+            <param name="text">String containing text to be written.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.WriteText(System.String,System.Boolean)">
+            <summary>
+            Writes a string of text to file using UTF8 encoding.
+            </summary>
+            <param name="text">String containing text to be written.</param>
+            <param name="appendText">If True, text is appended to the file; otherwise the file will be overwritten.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.WriteText(System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Writes a string of text to file using the specified encoding.
+            </summary>
+            <param name="text">String containing text to be written.</param>
+            <param name="appendText">If True, text is appended to the file; otherwise the file will be overwritten.</param>
+            <param name="encoding">System.Text.Encoding to use.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.WriteTextLine(System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Writes a single line of text to file using the specified encoding.
+            </summary>
+            <param name="text">String containing text to be written.</param>
+            <param name="appendText">If True, text is appended to the file; otherwise the file will be overwritten.</param>
+            <param name="encoding">System.Text.Encoding to use.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.WriteTextLines(System.Collections.Generic.List{System.String},System.Boolean,System.Text.Encoding)">
+            <summary>
+            Writes to file all lines of text encapsulated within the passed array of strings.
+            </summary>
+            <param name="textLines">Lines of text to be written.</param>
+            <param name="appendText">If True, text is appended to the file; otherwise the file will be overwritten.</param>
+            <param name="encoding">System.Text.Encoding to use.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.ToString">
+            <summary>
+            Overrides ToString method. Returns full path to this file.
+            </summary>
+            <returns>Full path to file.</returns>
+        </member>
+        <member name="M:Autodesk.FileSystem.File.CreateTemporaryFile(System.String,System.Boolean)">
+            <summary>
+            Creates a new File object representing a temporary file (i.e. in the user's temporary file folder) and with the specified extension.
+            The file will, optionally, be created on disk.
+            </summary>
+            <param name="extension">File extension.</param>
+            <param name="createFile">If True, a zero-byte file is created on disk.</param>
+            <returns>DelcamFile</returns>
+        </member>
+        <member name="T:Autodesk.FileSystem.DirectoryWatcher">
+            <summary>
+            Monitors directories and raises events when files are created, modified or deleted.
+            </summary>
+        </member>
+        <member name="T:Autodesk.FileSystem.DirectoryWatcher.FileEventHandler">
+            <summary>
+            Use this as the prototype to handle the FileCreated event fired by this class.
+            </summary>
+            <param name="sender">Sender of this event.</param>
+            <param name="e">Encapsulates arguments pertinent to this event.</param>
+        </member>
+        <member name="E:Autodesk.FileSystem.DirectoryWatcher.FileCreated">
+            <summary>
+            Occurs when a file is created in the monitored directory.
+            </summary>
+        </member>
+        <member name="T:Autodesk.FileSystem.DirectoryWatcher.FileDeletedHandle">
+            <summary>
+            Use this as the prototype to handle the FileDeleted event fired by this class.
+            </summary>
+            <param name="sender">Sender of this event.</param>
+            <param name="e">Encapsulates arguments pertinent to this event.</param>
+        </member>
+        <member name="E:Autodesk.FileSystem.DirectoryWatcher.FileDeleted">
+            <summary>
+            Occurs when a file is deleted from the monitored directory.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.DirectoryWatcher.#ctor(Autodesk.FileSystem.Directory)">
+            <summary>
+            Constructs a DirectoryWatcher object about the directory specified in the single input argument.
+            </summary>
+            <param name="directoryToWatch">Directory to monitor.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.DirectoryWatcher.#ctor(Autodesk.FileSystem.Directory,System.String,System.Boolean)">
+            <summary>
+            Constructs a DirectoryWatcher object with options to monitor specific file types and sub-directories.
+            </summary>
+            <param name="directoryToWatch">Directory to monitor.</param>
+            <param name="filter">File types to monitor e.g. *.TXT.</param>
+            <param name="watchSubdirectories">If True, subdirectories are also monitored.</param>
+        </member>
+        <member name="P:Autodesk.FileSystem.DirectoryWatcher.EnableRaisingEvents">
+            <summary>
+            If True the raising of events is enabled; suppresed otherwise.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.DirectoryWatcher._watcher_Created(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Raises FileCreated event.
+            </summary>
+            <param name="sender">Object raising event i.e. this.</param>
+            <param name="e">Arguments pertinent to this event.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.DirectoryWatcher._watcher_Deleted(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Raises FileDeleted event.
+            </summary>
+            <param name="sender">Object raising event i.e. this.</param>
+            <param name="e">Arguments pertinent to this event.</param>
+        </member>
+        <member name="T:Autodesk.FileSystem.FileWatcher">
+            <summary>
+            Monitors a single file and raises events when it is modified.
+            </summary>
+        </member>
+        <member name="E:Autodesk.FileSystem.FileWatcher.FileCreated">
+            <summary>
+            Occurs when the file is created.
+            </summary>
+        </member>
+        <member name="E:Autodesk.FileSystem.FileWatcher.FileDeleted">
+            <summary>
+            Occurs when the file is deleted.
+            </summary>
+        </member>
+        <member name="E:Autodesk.FileSystem.FileWatcher.FileChanged">
+            <summary>
+            Occurs when the file name is changed, the file is accessed or the file is written to.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.FileWatcher.#ctor(Autodesk.FileSystem.File)">
+            <summary>
+            Creates a watcher that will monitor all changes to the specified file.
+            </summary>
+            <param name="fileIn">DelcamFile to watch</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.FileWatcher.#ctor(System.String)">
+            <summary>
+            Constructs a watcher for the specified file.
+            </summary>
+            <param name="fileName">File to monitor.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.FileWatcher._watcher_Changed(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Raises the FileChanged event.
+            </summary>
+            <param name="sender">Object raising event i.e. this.</param>
+            <param name="e">Encapsulates arguments pertinent to this event.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.FileWatcher._watcher_Deleted(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Raises the FileDeleted event.
+            </summary>
+            <param name="sender">Object raising event i.e. this.</param>
+            <param name="e">Encapsulates arguments pertinent to this event.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.FileWatcher._watcher_Created(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Raises the FileCreated event.
+            </summary>
+            <param name="sender">Object raising event i.e. this.</param>
+            <param name="e">Encapsulates arguments pertinent to this event.</param>
+        </member>
+        <member name="T:Autodesk.FileSystem.Watcher">
+            <summary>
+            Abstract class on which are built the Delcam directory and file watcher classes. Regularly checks the specified
+            directory and raises a notification event should it no longer exist.
+            </summary>
+        </member>
+        <member name="F:Autodesk.FileSystem.Watcher._watcher">
+            <summary>
+            System watcher object upon which this class leverages.
+            </summary>
+        </member>
+        <member name="T:Autodesk.FileSystem.Watcher.DirectoryUnavailableHandler">
+            <summary>
+            Use this as the prototype to handle the DirectoryUnavailable event fired by this class.
+            </summary>
+            <param name="sender">Sender of this event.</param>
+            <param name="e">Encapsulates arguments pertinent to this event.</param>
+        </member>
+        <member name="E:Autodesk.FileSystem.Watcher.DirectoryUnavailable">
+            <summary>
+            Occurs when the directory monitored by this object has been deleted.
+            </summary>
+        </member>
+        <member name="P:Autodesk.FileSystem.Watcher.DirectoryUnavailableTimerStatus">
+            <summary>
+            True if timer running; False otherwise.
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.Watcher.#ctor(Autodesk.FileSystem.Directory)">
+            <summary>
+            Constructs a Watcher object about the directory specified in the single input argument.
+            </summary>
+            <param name="directoryToWatch">Directory to monitor.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.Watcher.#ctor(System.String)">
+            <summary>
+            Creates a new directory on disk and constructs a Watcher object about it.
+            </summary>
+            <param name="directoryPath">String containing path of new directory to create.</param>
+        </member>
+        <member name="M:Autodesk.FileSystem.Watcher._timer_Elapsed(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Timer event handler. Checks to see if directory is still available in the file system and raises
+            an event if it is not.
+            </summary>
+            <param name="sender">Object raising this event.</param>
+            <param name="e">Raised event arguments.</param>
+        </member>
+        <member name="T:Autodesk.FileSystem.WatcherEventArgs">
+            <summary>
+            Encapsulates arguments pertinent to the Watcher class.
+            </summary>
+        </member>
+        <member name="F:Autodesk.FileSystem.WatcherEventArgs._directory">
+            <summary>
+            The directory that was being watched
+            </summary>
+        </member>
+        <member name="M:Autodesk.FileSystem.WatcherEventArgs.#ctor(Autodesk.FileSystem.Directory)">
+            <summary>
+            </summary>
+            <param name="watchedDirectory">Directory being watched</param>
+        </member>
+        <member name="P:Autodesk.FileSystem.WatcherEventArgs.Directory">
+            <summary>
+            The directory being watched.
+            </summary>
+        </member>
+    </members>
+</doc>

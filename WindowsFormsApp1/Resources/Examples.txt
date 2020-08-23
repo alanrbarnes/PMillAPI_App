@@ -1,0 +1,39 @@
+           
+		   ////////////////////////////////
+		   //Executing commands and macros
+		   ////////////////////////////////
+		   
+		   //next try Works, good for executing individual commands
+            //String path = "MACRO " + "L:/CAM-Library/Niigata/NiigataMacros/CreateToolPathMacros/MultiSideMacros/ThickBlockFacingWithIngersolCutter.mac";
+            //projectUse.Execute(path);
+
+            //Next try works, only for macros
+            //String path = "L:/CAM-Library/Niigata/NiigataMacros/CreateToolPathMacros/MultiSideMacros/ThickBlockFacingWithIngersolCutter.mac";
+            //Autodesk.FileSystem.File f = new Autodesk.FileSystem.File(path);
+            //PMMacro macro = projectUse.LoadMacro(f);
+            //macro.RunComplete();
+
+            //next try works, only for macros, simplified
+            String path = "L:/CAM-Library/Niigata/NiigataMacros/CreateToolPathMacros/MultiSideMacros/ThickBlockFacingWithIngersolCutter.mac";
+            PMMacro macro = projectUse.LoadMacro(new Autodesk.FileSystem.File(path));
+            macro.RunComplete();
+
+
+			///////////////////////////////////////
+			//Misc stuff
+			///////////////////////////////
+			        ////button for workspace change in workspace page
+        //private void formButton1_Click(object sender, EventArgs e)
+        //{functionPanel.Visible = false;}
+
+        ////button for workspace change in function page
+        //private void button1_Click_1(object sender, EventArgs e)
+        //{functionPanel.Visible = false;}
+
+        ////Button for form, functions in workspace page
+        //private void formButton2_Click(object sender, EventArgs e)
+        //{functionPanel.Visible = true;}
+
+        ////button for function change in function page
+        //private void Fbutton2_Click(object sender, EventArgs e)
+        //{functionPanel.Visible = true;}
